@@ -1,0 +1,70 @@
+.content-card {
+    padding: 16px;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+
+    .h1-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        span {
+            padding: 4px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 32px;
+            font-size: 14px;
+            color: white;
+            font-weight: normal;
+            background-color: navy;
+        }
+    }
+
+    .list-filter-area {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        .chip {
+            cursor: pointer;
+            border: 1px solid navy;
+            padding: 4px 16px;
+            border-radius: 16px;
+            &.active {
+                background-color: navy;
+                color: white;
+            }
+        }
+    }
+
+    .content-list-detail {
+        display: flex;
+        gap: 16px;
+        
+        .item-list {
+            height: 60vh;
+            width: calc((100% / 3) - 8px);
+            overflow-y: auto;
+
+            figure {
+                cursor: pointer;
+                padding: 8px 16px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                border-radius: 8px;
+                .name {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    font-size: 18px;
+                }
+                figcaption {
+                    margin-top: 16px;
+                }
+            }
+        }
+        .item-detail {
+            width: calc(((100% / 3) * 2) - 8px);
+        }
+    }
+}

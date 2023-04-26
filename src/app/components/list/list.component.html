@@ -1,0 +1,58 @@
+<div class="content-card">
+    <h1 class="h1-title">
+        Lista de empleados
+
+        <span>
+            {{listAuxEmployes.length}}
+            <mat-icon>group</mat-icon>
+        </span>
+    </h1>
+    <hr>
+
+    <div class="list-filter-area" #listFilter>
+        <span>
+            Filtrar por estado
+        </span>
+
+        <div class="chip active" #all (click)="filterBy('all', all, listFilter)">
+            Todo
+        </div>
+
+        <div class="chip" #activo (click)="filterBy('Activo', activo, listFilter)">
+            Activo
+        </div>
+
+        <div class="chip" #pendiente (click)="filterBy('Pendiente', pendiente, listFilter)">
+            Pendientes
+        </div>
+
+        <div class="chip" #ausente (click)="filterBy('Ausente', ausente, listFilter)">
+            Ausente
+        </div>
+    </div>
+
+    <div class="content-list-detail mt-4">
+        <div class="item-list">
+            <figure *ngFor="let item of listAuxEmployes" (click)="seeDetail(item)">
+                <div class="name">
+                    <mat-icon>account_circle</mat-icon>
+                    {{item.nombre}}
+                </div>
+                <figcaption>
+                    <span>
+                        Puesto: {{item.puesto}}
+                    </span>
+                    <br>
+                    <span>
+                        Estatus: {{item.estatus}}
+                    </span>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="item-detail">
+            <app-add-edit></app-add-edit>
+        </div>
+    </div>
+        
+</div>

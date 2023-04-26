@@ -1,0 +1,7 @@
+{
+    "/API-REST/api/*": {
+        "target": "https://fernando-backend-project.000webhostapp.com",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

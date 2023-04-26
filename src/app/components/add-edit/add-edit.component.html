@@ -1,0 +1,101 @@
+<div class="content-card">
+    <h1 class="h1-title" *ngIf="isCreate">
+        Empleado nuevo
+    </h1>
+    <h1 class="h1-title" *ngIf="!isCreate">
+        Editar empleado
+    </h1>
+    <hr>
+
+
+    <form [formGroup]="empleadoForm" class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <label class="mb-1 d-block">
+                Subir foto:
+            </label>
+            <input (change)="convertBase64($event)" formControlName="foto" class="form-control form-control-sm" type="file" accept="image/png, image/jpeg">
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mt-4">
+            <mat-form-field class="w-100">
+                <mat-label>Nombre completo</mat-label>
+                <input formControlName="nombre" matInput>
+            </mat-form-field>
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mt-4">
+            <mat-form-field class="w-100">
+                <mat-label>Puesto</mat-label>
+                <mat-select formControlName="puesto">
+                    <mat-option value="Developer">
+                        Developer
+                    </mat-option>
+                    <mat-option value="Diseñador grafico">
+                        Diseñador grafico
+                    </mat-option>
+                    <mat-option value="Recursos Humanos">
+                        Recursos Humanos
+                    </mat-option>
+                    <mat-option value="Asistente general">
+                        Asistente general
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mt-4">
+            <mat-form-field floatLabel="always" class="w-100">
+                <mat-label>salario</mat-label>
+                <input formControlName="salario" matInput type="number" class="example-right-align" placeholder="0">
+            </mat-form-field>
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mt-4">
+            <mat-form-field class="w-100">
+                <mat-label>Estatus</mat-label>
+                <mat-select formControlName="estatus">
+                    <mat-option value="Activo">
+                        Activo
+                    </mat-option>
+                    <mat-option value="Pendiente">
+                        Pendiente
+                    </mat-option>
+                    <mat-option value="Ausente">
+                        Ausente
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mt-4">
+            <mat-form-field class="w-100 mat-form-field-data-picker">
+                <mat-label>fechaContratacion</mat-label>
+                <input formControlName="fechaContratacion" matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button
+                *ngIf="!isCreate"
+                class="col-xs-3 col-sm-3 col-md-3 col-lg-3 mt-4 me-3" 
+                mat-stroked-button 
+                color="warn"
+                (click)="deleteEmploye()"
+                >
+                Eliminar
+            </button>
+            
+            <button 
+                class="col-xs-3 col-sm-3 col-md-3 col-lg-3 mt-4" 
+                mat-flat-button 
+                color="primary"
+                (click)="save()"
+                [disabled]="empleadoForm.status == 'INVALID'"
+                >
+                Guardar
+            </button>
+        </div> 
+    </form>
+</div>
